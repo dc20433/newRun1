@@ -1,0 +1,6 @@
+@import 'trix/dist/trix'; // Optionally use Trix's provided stylesheet as a starter
+action-text-attachment {
+  .attachment__caption {
+    @extend .fw-light, .text-center, .text-black-50;
+  }
+}
