@@ -84,20 +84,28 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary: &primary_production
-    <<: *default
-    database: new_run1_production
-    username: new_run1
-    password: <%= ENV["NEW_RUN1_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: new_run1_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: new_run1_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: new_run1_production_cable
-    migrations_paths: db/cable_migrate
+  # primary: &primary_production
+  #   <<: *default
+  #   database: new_run1_production
+  #   username: new_run1
+  #   password: <%= ENV["NEW_RUN1_DATABASE_PASSWORD"] %>
+  # cache:
+  #   <<: *primary_production
+  #   database: new_run1_production_cache
+  #   migrations_paths: db/cache_migrate
+  # queue:
+  #   <<: *primary_production
+  #   database: new_run1_production_queue
+  #   migrations_paths: db/queue_migrate
+  # cable:
+  #   <<: *primary_production
+  #   database: new_run1_production_cable
+  #   migrations_paths: db/cable_migrate
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
+
